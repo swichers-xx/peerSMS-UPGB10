@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerSMS Beta1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>PeerSMS Beta1</h1>
+        <div id="general-settings">
+            <h2>General Settings</h2>
+            <form id="general-settings-form">
+                <div class="form-group">
+                    <label for="twilio-account-sid">Twilio Account SID:</label>
+                    <input type="text" id="twilio-account-sid" name="twilioAccountSid" required>
+                </div>
+                <div class="form-group">
+                    <label for="twilio-auth-token">Twilio Auth Token:</label>
+                    <input type="password" id="twilio-auth-token" name="twilioAuthToken" required>
+                </div>
+                <div class="form-group">
+                    <label for="twilio-phone-number">Twilio Phone Number:</label>
+                    <input type="tel" id="twilio-phone-number" name="twilioPhoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="api-key">API Key:</label>
+                    <input type="text" id="api-key" name="api-key" required>
+                </div>
+                <div class="form-group">
+                    <label for="webhook-url">Webhook URL:</label>
+                    <input type="url" id="webhook-url" name="webhook-url">
+                </div>
+                <div class="form-group">
+                    <label for="default-country">Default Country:</label>
+                    <select id="default-country" name="default-country">
+                        <option value="US">United States</option>
+                        <!-- Add more country options here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="opt-out-keyword">Opt-out Keyword:</label>
+                    <input type="text" id="opt-out-keyword" name="opt-out-keyword" value="STOP">
+                </div>
+                <div class="form-group">
+                    <label for="opt-in-keyword">Opt-in Keyword:</label>
+                    <input type="text" id="opt-in-keyword" name="opt-in-keyword" value="START">
+                </div>
+                <button type="submit">Save Settings</button>
+            </form>
+        </div>
+        <div id="message-template">
+            <h2>Message Template</h2>
+            <form id="message-template-form">
+                <div class="form-group">
+                    <label for="greeting">Greeting:</label>
+                    <input type="text" id="greeting" name="greeting" placeholder="e.g., Hi {first_name}!">
+                </div>
+                <div class="form-group">
+                    <label for="body">Body:</label>
+                    <textarea id="body" name="body" rows="4" placeholder="Enter your message body here"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="closing">Closing:</label>
+                    <input type="text" id="closing" name="closing" placeholder="e.g., Best regards, {agent_name}">
+                </div>
+                <div class="form-group">
+                    <label for="variables">Available Variables:</label>
+                    <select id="variables" multiple>
+                        <!-- CSV column names will be dynamically added here -->
+                    </select>
+                </div>
+                <button type="button" id="insert-variable">Insert Variable</button>
+                <button type="submit">Save Template</button>
+            </form>
+            <div id="template-preview">
+                <h3>Preview</h3>
+                <div id="preview-content"></div>
+            </div>
+        </div>
+        <div id="reply-templates">
+            <h2>Reply Templates</h2>
+            <form id="reply-template-form">
+                <div class="form-group">
+                    <label for="template-name">Template Name:</label>
+                    <input type="text" id="template-name" name="templateName" required>
+                </div>
+                <div class="form-group">
+                    <label for="template-content">Template Content:</label>
+                    <textarea id="template-content" name="templateContent" rows="4" required></textarea>
+                </div>
+                <button type="submit">Add Template</button>
+            </form>
+            <div id="template-list">
+                <!-- Existing templates will be displayed here -->
+            </div>
+        </div>
+        <div id="questions">
+            <h2>Questions</h2>
+            <form id="question-form">
+                <div class="form-group">
+                    <label for="question-text">Question:</label>
+                    <input type="text" id="question-text" name="questionText" required>
+                </div>
+                <button type="submit">Add Question</button>
+            </form>
+            <div id="question-list">
+                <!-- Existing questions will be displayed here -->
+            </div>
+        </div>
+        <div id="agents">
+            <h2>Agents</h2>
+            <form id="agent-form">
+                <div class="form-group">
+                    <label for="agent-name">Agent Name:</label>
+                    <input type="text" id="agent-name" name="agentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="agent-email">Agent Email:</label>
+                    <input type="email" id="agent-email" name="agentEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="agent-phone">Agent Phone:</label>
+                    <input type="tel" id="agent-phone" name="agentPhone">
+                </div>
+                <button type="submit">Add Agent</button>
+            </form>
+            <div id="agent-list">
+                <!-- Existing agents will be displayed here -->
+            </div>
+        </div>
+        <div id="delivery-schedule">
+            <h2>Delivery Schedule</h2>
+            <form id="schedule-form">
+                <div class="form-group">
+                    <label for="start-time">Start Time:</label>
+                    <input type="time" id="start-time" name="startTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="end-time">End Time:</label>
+                    <input type="time" id="end-time" name="endTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="max-messages">Max Messages:</label>
+                    <input type="number" id="max-messages" name="maxMessages" min="1" required>
+                </div>
+                <button type="submit">Add Time Slot</button>
+            </form>
+            <div id="schedule-list">
+                <!-- Existing time slots will be displayed here -->
+            </div>
+        </div>
+        <div id="phone-list">
+            <h2>Phone List</h2>
+            <form id="csv-upload-form">
+                <div class="form-group">
+                    <label for="csv-file">Upload CSV File:</label>
+                    <input type="file" id="csv-file" name="csv" accept=".csv" required>
+                </div>
+                <button type="submit">Upload CSV</button>
+            </form>
+            <div id="csv-preview"></div>
+            <div id="phone-list-container">
+                <!-- Existing phone numbers will be displayed here -->
+            </div>
+        </div>
+        <div id="suppression-list">
+            <h2>Suppression List</h2>
+            <form id="suppression-form">
+                <div class="form-group">
+                    <label for="suppression-number">Phone Number:</label>
+                    <input type="tel" id="suppression-number" name="phone" required>
+                </div>
+                <button type="submit">Add to Suppression List</button>
+            </form>
+            <div id="suppression-list-container">
+                <!-- Existing suppressed numbers will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

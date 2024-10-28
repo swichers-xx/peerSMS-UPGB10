@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#general-settings, #message-template, #reply-templates, #questions, #agents, #delivery-schedule, #phone-list, #suppression-list {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#variables {
+    height: 100px;
+}
+
+#template-preview {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+#preview-content {
+    white-space: pre-wrap;
+}
+
+#template-list, #question-list, #agent-list, #schedule-list, #phone-list-container, #suppression-list-container {
+    margin-top: 20px;
+}
+
+.template-item, .question-item, .agent-item, .schedule-item, .phone-item, .suppression-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.template-item h3, .question-item h3, .agent-item h3, .schedule-item h3 {
+    margin-top: 0;
+}
+
+.template-actions, .question-actions, .agent-actions, .schedule-actions, .phone-actions, .suppression-actions {
+    margin-top: 10px;
+}
+
+.template-actions button, .question-actions button, .agent-actions button, .schedule-actions button, .phone-actions button, .suppression-actions button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.schedule-item, .phone-item, .suppression-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.schedule-item-info, .phone-number, .suppression-number {
+    flex-grow: 1;
+}
+
+.schedule-item-actions, .phone-actions, .suppression-actions {
+    flex-shrink: 0;
+}
+
+#csv-preview {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+#csv-preview table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#csv-preview th, #csv-preview td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#csv-preview th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#login-form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#login-form input {
+    margin-bottom: 10px;
+}
+
+#login-form button {
+    width: 100%;
+}
